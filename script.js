@@ -622,7 +622,7 @@ gameBoardEl.addEventListener("touchstart", e => {
 }, { passive: true }); // ✅ false로 바꿔야 함
 
 
-// 🔥 스크롤 완전 차단
+// 🔥 스크롤 완전 차단  
 gameBoardEl.addEventListener("touchmove", function(e) {
   e.preventDefault(); // 👉 이거 하나면 충분
 }, { passive: false });
