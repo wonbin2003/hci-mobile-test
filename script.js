@@ -618,6 +618,18 @@ gameBoardEl.addEventListener("touchstart", e => {
   touchStartY = e.touches[0].clientY;
 }, { passive: true });
 
+gameBoardEl.addEventListener("touchmove", function(e) {
+  const dx = e.touches[0].clientX - touchStartX;
+  const dy = e.touches[0].clientY - touchStartY;
+
+  // 스와이프 방향 판단 후 스크롤 막기
+  if (Math.abs(dx) > Math.abs(dy)) {
+    e.preventDefault(); // 가로 스와이프 → 무조건 막기
+  } else {
+    e.preventDefault(); // 세로도 막아야 완전 고정됨
+  }
+}, { passive: false });
+
 gameBoardEl.addEventListener("touchend", e => {
   const endX = e.changedTouches[0].clientX;
   const endY = e.changedTouches[0].clientY;
@@ -650,3 +662,4 @@ if ("serviceWorker" in navigator) {
 bestScoreEl.textContent = bestScore;
 initBoard();
 updateStatus("대기 중");
+

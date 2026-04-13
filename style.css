@@ -26,6 +26,7 @@ html, body {
   background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
   font-family: Arial, Helvetica, sans-serif;
   overscroll-behavior: none;
+  touch-action: none;
 }
 
 body {
