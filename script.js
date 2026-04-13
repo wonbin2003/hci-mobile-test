@@ -616,11 +616,10 @@ document.addEventListener("keydown", e => {
 
 // 🔥 터치 시작
 gameBoardEl.addEventListener("touchstart", e => {
-  e.preventDefault(); // ✅ 오타 수정 + 실행되게
 
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
-}, { passive: false }); // ✅ false로 바꿔야 함
+}, { passive: true }); // ✅ false로 바꿔야 함
 
 
 // 🔥 스크롤 완전 차단
