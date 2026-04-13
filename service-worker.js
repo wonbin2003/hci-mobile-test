@@ -1,4 +1,4 @@
-const CACHE_NAME = "notification-experiment-app-v2";
+const CACHE_NAME = "notification-experiment-app-v1";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",

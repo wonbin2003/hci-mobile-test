@@ -351,7 +351,6 @@ function setupNotificationSwipe(el) {
   }, { passive: true });
 
   el.addEventListener("touchmove", e => {
-    
     if (!dragging) return;
     currentX = e.touches[0].clientX;
     const diffX = currentX - startX;
@@ -614,24 +613,11 @@ document.addEventListener("keydown", e => {
   }
 });
 
-// 🔥 터치 시작
 gameBoardEl.addEventListener("touchstart", e => {
-
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
-}, { passive: true }); // ✅ false로 바꿔야 함
+}, { passive: true });
 
-
-// 🔥 스크롤 완전 차단  
-gameBoardEl.addEventListener("touchmove", function(e) {
-  e.preventDefault(); // 👉 이거 하나면 충분
-
-  touchCurrentX = e.touches[0].clientX;
-  touchCurrentY = e.touches[0].clientY;
-}, { passive: false });
-
-
-// 🔥 스와이프 처리
 gameBoardEl.addEventListener("touchend", e => {
   const endX = e.changedTouches[0].clientX;
   const endY = e.changedTouches[0].clientY;
@@ -664,4 +650,3 @@ if ("serviceWorker" in navigator) {
 bestScoreEl.textContent = bestScore;
 initBoard();
 updateStatus("대기 중");
-
