@@ -614,11 +614,18 @@ document.addEventListener("keydown", e => {
 });
 
 gameBoardEl.addEventListener("touchstart", e => {
+
+  e.preventDefault
+
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
 }, { passive: true });
 
 gameBoardEl.addEventListener("touchmove", function(e) {
+   
+  if (!gameBoardEl.contains(e.target)) {
+    e.preventDefault();
+  }
   const dx = e.touches[0].clientX - touchStartX;
   const dy = e.touches[0].clientY - touchStartY;
 
