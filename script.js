@@ -351,6 +351,7 @@ function setupNotificationSwipe(el) {
   }, { passive: true });
 
   el.addEventListener("touchmove", e => {
+    
     if (!dragging) return;
     currentX = e.touches[0].clientX;
     const diffX = currentX - startX;
@@ -613,30 +614,22 @@ document.addEventListener("keydown", e => {
   }
 });
 
+// 🔥 터치 시작
 gameBoardEl.addEventListener("touchstart", e => {
-
-  e.preventDefault
+  e.preventDefault(); // ✅ 오타 수정 + 실행되게
 
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
-}, { passive: true });
+}, { passive: false }); // ✅ false로 바꿔야 함
 
+
+// 🔥 스크롤 완전 차단
 gameBoardEl.addEventListener("touchmove", function(e) {
-   
-  if (!gameBoardEl.contains(e.target)) {
-    e.preventDefault();
-  }
-  const dx = e.touches[0].clientX - touchStartX;
-  const dy = e.touches[0].clientY - touchStartY;
-
-  // 스와이프 방향 판단 후 스크롤 막기
-  if (Math.abs(dx) > Math.abs(dy)) {
-    e.preventDefault(); // 가로 스와이프 → 무조건 막기
-  } else {
-    e.preventDefault(); // 세로도 막아야 완전 고정됨
-  }
+  e.preventDefault(); // 👉 이거 하나면 충분
 }, { passive: false });
 
+
+// 🔥 스와이프 처리
 gameBoardEl.addEventListener("touchend", e => {
   const endX = e.changedTouches[0].clientX;
   const endY = e.changedTouches[0].clientY;
