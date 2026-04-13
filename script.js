@@ -625,6 +625,9 @@ gameBoardEl.addEventListener("touchstart", e => {
 // 🔥 스크롤 완전 차단  
 gameBoardEl.addEventListener("touchmove", function(e) {
   e.preventDefault(); // 👉 이거 하나면 충분
+
+  touchCurrentX = e.touches[0].clientX;
+  touchCurrentY = e.touches[0].clientY;
 }, { passive: false });
 
 
